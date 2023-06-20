@@ -1,0 +1,44 @@
+<section class="vh-100" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body p-5">
+                <div class="col-md-8 col-lg-7 col-xl-7 m-auto text-center">
+                    <img src="assets/images/logo.png" style="max-width: 70%" class="img-fluid" alt="Phone image">
+                    <span style="font-weight: bold;">NAGALAND UNIVERSITY </span><br/>
+                    <span style="font-weight: bold;">Library </span><br/>
+                    <span style="font-weight: bold;">Medziphema campus</span><br/>
+                    <span style="font-weight: bold;">THESIS FOR M.Sc & Ph.D</span><br/>
+                </div>
+                <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form1Example13">Username</label>
+                        <input formControlName="username" type="text" id="form1Example13" class="form-control form-control-lg" />
+                        <div class="has-error" *ngIf="submitted && loginForm.controls['username'].errors">
+                          <p class="help-block">Username is required.</p>
+                        </div>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form1Example23">Password</label>
+                        <input formControlName="password" type="password" id="form1Example23" class="form-control form-control-lg" />
+                        <div class="has-error" *ngIf="submitted && loginForm.controls['password'].errors">
+                          <p class="help-block">Password is required.</p>
+                        </div>
+                    </div>
+                    
+
+                    <!-- Submit button -->
+                    <div class="m-auto text-center">
+                        <button type="submit"  class="btn btn-primary btn-lg btn-block">Sign in</button>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,16 @@
+.input-group {
+    position: relative;
+}
+
+.input-group-append button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input-group-append button i {
+    transition: transform 0.3s;
+}
+
+.show-password+.input-group-append button i {
+    transform: rotate(180deg);
+}
