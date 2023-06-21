@@ -50,14 +50,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Thesis File</label>
-                                    <input class="form-control" type="file">
-                                    <!-- <div class="has-error" *ngIf="submitted && thesisForm.controls['author'].errors">
-                                        <p class="help-block">Author is required.</p> 
-                                    </div>-->
+                                    <input class="form-control" (change)="onFileChange($event)" type="file" formControlName="file">
+                                    <div class="has-error" *ngIf="submitted && thesisForm.controls['file'].errors">
+                                        <p class="help-block">File is required.</p> 
+                                    </div>
                                 </div>
                                 <div class="mt-4">
                                     <button class="btn btn-primary" type="submit">Add</button>
-                                    <a [routerLink]="'/msc-thesis-list'" class="btn btn-link">Back</a>
+                                    <a [routerLink]="course=='msc' ? '/msc-thesis-list' : '/phd-thesis-list'" class="btn btn-link">Back</a>
                                 </div>
                             </form>
                             <!-- Form -->

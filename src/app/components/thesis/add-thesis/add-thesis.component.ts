@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ThesisService } from '../thesis.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-thesis',
@@ -17,8 +17,15 @@ export class AddThesisComponent {
     public fb : FormBuilder,
     public thesisService : ThesisService,
     public toastr : ToastrService,
-    public router : Router
-  ){}
+    public router : Router,
+    public activatedroute: ActivatedRoute
+  ){
+    this.activatedroute.params.subscribe((params:any)=>{
+      if(params.course){
+        this.course = params.course
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.thesisForm = this.fb.group({
@@ -26,23 +33,47 @@ export class AddThesisComponent {
       'author':['',Validators.required],
       'department':['',Validators.required],
       'year':['',Validators.required],
-      'course':['',Validators.required],
+      'course':[this.course,Validators.required],
+      'file': ['',Validators.required],
+      'fileSource' : ['',Validators.required]
     })
   }
 
   addUser(){
     this.submitted = true;
-    console.log(this.thesisForm)
     if(this.thesisForm.status=='VALID'){
-      const requestData = {'username':this.thesisForm.get('username')?.value,'password':this.thesisForm.get('password')?.value}
-      // this.thesisService.addUser(requestData).subscribe(res=>{
-      //   if(res.status){
-      //     this.toastr.success(res.message)
-      //     this.router.navigate(['user-list']);
-      //   }else{
-      //     this.toastr.error(res.message)
-      //   }
-      // })
+      const formData = new FormData();
+      formData.append('title', this.thesisForm.value.title);
+      formData.append('author', this.thesisForm.value.author);
+      formData.append('department', this.thesisForm.value.department);
+      formData.append('year', this.thesisForm.value.year);
+      formData.append('course', this.thesisForm.value.course);
+      formData.append('pdf', this.thesisForm.value.fileSource);
+      
+      this.thesisService.addThesis(formData).subscribe((res:any)=>{
+        if(res.status){
+          this.toastr.success(res.message)
+          if(this.course=='msc'){
+            this.router.navigate(['msc-thesis-list']);
+          }else{
+            this.router.navigate(['phd-thesis-list']);
+          }
+          
+        }else{
+          this.toastr.error(res.message)
+        }
+      })
+    }
+  }
+
+  onFileChange(event: any): void {
+
+    if (event.target.files.length > 0) {
+      const pdfFiles = event.target.files;
+      const file = pdfFiles.item(0);
+      this.thesisForm.patchValue({
+        fileSource: file
+      });
     }
   }
 

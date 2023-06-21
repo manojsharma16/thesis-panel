@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ThesisRoutingModule } from './thesis-routing.module';
-import { ThesisListComponent } from './thesis-list/thesis-list.component';
 import { MscThesisListComponent } from './msc-thesis-list/msc-thesis-list.component';
 import { PhdThesisListComponent } from './phd-thesis-list/phd-thesis-list.component';
 import { MatTableModule } from '@angular/material/table';
@@ -17,7 +16,6 @@ import { EditThesisComponent } from './edit-thesis/edit-thesis.component';
 
 @NgModule({
   declarations: [
-    ThesisListComponent,
     MscThesisListComponent,
     PhdThesisListComponent,
     AddThesisComponent,

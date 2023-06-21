@@ -14,11 +14,11 @@ const routes: Routes = [
     component: PhdThesisListComponent
   },
   {
-    path : 'add-thesis/:type',
+    path : 'add-thesis/:course',
     component: AddThesisComponent
   },
   {
-    path : 'edit-thesis/:type',
+    path : 'edit-thesis/:course',
     component: EditThesisComponent
   },
 

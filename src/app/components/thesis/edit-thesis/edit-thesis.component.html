@@ -1,1 +1,72 @@
-<p>edit-thesis works!</p>
+<div class="main-wrapper">
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="row">
+                <div class="col-xl-8 offset-xl-2">
+
+                    <!-- Page Header -->
+                    <div class="page-header">
+                        <div class="row">
+                            <div class="col">
+                                <h3 class="page-title">Edit {{course}} Thesis</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Page Header -->
+
+                    <div class="card">
+                        <div class="card-body">
+
+                            <!-- Form -->
+                            <form [formGroup]="thesisForm" (ngSubmit)="addUser()">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <input class="form-control" formControlName="title" type="text">
+                                    <div class="has-error" *ngIf="submitted && thesisForm.controls['title'].errors">
+                                        <p class="help-block">Title is required.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Author</label>
+                                    <input class="form-control" formControlName="author" type="text">
+                                    <div class="has-error" *ngIf="submitted && thesisForm.controls['author'].errors">
+                                        <p class="help-block">Author is required.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Department</label>
+                                    <input class="form-control" formControlName="department" type="text">
+                                    <div class="has-error" *ngIf="submitted && thesisForm.controls['department'].errors">
+                                        <p class="help-block">Department is required.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Year</label>
+                                    <input class="form-control" formControlName="year" type="text">
+                                    <div class="has-error" *ngIf="submitted && thesisForm.controls['year'].errors">
+                                        <p class="help-block">Year is required.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Thesis File</label>
+                                    <input class="form-control" (change)="onFileChange($event)" type="file" formControlName="pdf">
+                                    <a *ngIf="!thesisForm.controls['fileSource'].value" href="{{thesisData?.pdf}}" target="_blank">{{thesisData?.pdf_origianl_name}}</a>
+                                    <div class="has-error" *ngIf="submitted && thesisForm.controls['pdf'].errors">
+                                        <p class="help-block">File is required.</p> 
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button class="btn btn-primary" type="submit">Update</button>
+                                    <a [routerLink]="course=='msc' ? '/msc-thesis-list' : '/phd-thesis-list'" class="btn btn-link">Back</a>
+                                </div>
+                            </form>
+                            <!-- Form -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
