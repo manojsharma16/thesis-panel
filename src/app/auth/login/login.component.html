@@ -24,7 +24,15 @@
                     <!-- Password input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form1Example23">Password</label>
-                        <input formControlName="password" type="password" id="form1Example23" class="form-control form-control-lg" />
+                        <div class="input-group">
+                          <input formControlName="password" [type]="showPassword ? 'text' : 'password'" id="form1Example23" class="form-control form-control-lg" />
+                          <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button"
+                                (click)="showPassword=!showPassword">
+                                <i class="fa fa-eye" [ngClass]="{'fa-eye-slash': showPassword}"></i>
+                            </button>
+                          </div>
+                        </div>
                         <div class="has-error" *ngIf="submitted && loginForm.controls['password'].errors">
                           <p class="help-block">Password is required.</p>
                         </div>

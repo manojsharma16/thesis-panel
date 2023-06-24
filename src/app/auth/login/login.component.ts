@@ -11,6 +11,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent {
   public loginForm!: FormGroup;
   public submitted : boolean = false;
+  public showPassword : boolean = false;
   constructor(private router : Router, 
     private fb : FormBuilder,
     public authService : AuthService,

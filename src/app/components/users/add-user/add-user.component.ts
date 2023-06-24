@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AddUserComponent implements OnInit {
   public userForm! : FormGroup;
   public submitted : boolean = false;
+  public showPassword : boolean = false;
   constructor(
     public fb : FormBuilder,
     public userService : UserService,
