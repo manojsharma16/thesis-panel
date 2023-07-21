@@ -1,40 +1,67 @@
 <!-- Header -->
 <div class="header">
-    <div class="header-left">
+  <!--<div class="header-left">
         <a routerLink="/" class="logo logo-small">
             <img src="assets/images/logo.png" alt="Logo" width="30" height="30">
         </a>
-    </div>
-    <div style="float: right;margin: 12px;">
+    </div>-->
+  <div>
+    <div>
+      <div class="text-center text-white">
+        <span>NAGALAND UNIVERSITY</span><br />
+        <span>School Of Agriculture Science</span><br />
+        <span>Medziphema Nagaland</span><br />
+        <span></span>
+      </div>
+      <div style="float: right; margin-top: -51px">
         <button class="btn btn-primary" (click)="logout()">Logout</button>
+      </div>
     </div>
+  </div>
 </div>
 <!-- /Header -->
 
 <!-- Sidebar -->
 <div class="sidebar" id="sidebar">
-    <div class="sidebar-logo">
-        <a routerLink="/">
-            <img style="max-height: 120px;" src="assets/images/logo.png" class="img-fluid" alt="">
-        </a>
+  <div class="sidebar-logo">
+    <a routerLink="/">
+      <img
+        style="max-height: 120px"
+        src="assets/images/logo.png"
+        class="img-fluid"
+        alt=""
+      />
+    </a>
+  </div>
+  <div class="sidebar-inner slimscroll">
+    <div id="sidebar-menu" class="sidebar-menu">
+      <ul>
+        <li>
+          <a
+            routerLink="/user-list"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><i class="fas fa-user"></i> <span>Users</span></a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/msc-thesis-list"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><i class="fas fa-book"></i> <span>M.Sc Thesis</span></a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/phd-thesis-list"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><i class="fas fa-book"></i> <span>PhD Thesis</span></a
+          >
+        </li>
+      </ul>
     </div>
-    <div class="sidebar-inner slimscroll">
-        <div id="sidebar-menu" class="sidebar-menu">
-            <ul>
-                <li>
-                    <a routerLink="/user-list" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
-                        true}"><i class="fas fa-user"></i> <span>Users</span></a>
-                </li>
-                <li>
-                    <a routerLink="/msc-thesis-list" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
-                        true}"><i class="fas fa-book"></i> <span>M.Sc Thesis</span></a>
-                </li>
-                <li>
-                    <a routerLink="/phd-thesis-list" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
-                        true}"><i class="fas fa-book"></i> <span>PhD Thesis</span></a>
-                </li>
-            </ul>
-        </div>
-    </div>
+  </div>
 </div>
 <!-- /Sidebar -->
